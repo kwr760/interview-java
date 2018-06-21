@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 
 public class fizzbuzz {
-	public void runFizzBuzz(int A, int B, int N){
+	private void runFizzBuzz(int A, int B, int N){
 		for (int i = 1; i <= N; i++) {
 			if ((0 == i % A) && (0 == i % B))
 				System.out.print( "FB");

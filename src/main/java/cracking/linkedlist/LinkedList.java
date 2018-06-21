@@ -1,15 +1,15 @@
 package cracking.linkedlist;
 
 public class LinkedList {
-	Node head;
-	Node tail;
+	private Node head;
+	private Node tail;
 	
 	LinkedList() {
 		head = null;
 		tail = null;
 	}
 	
-	public void AddNode(Node node) {
+	void AddNode(Node node) {
 		if (null == head) {
 			head = node;
 			tail = node;
@@ -32,7 +32,7 @@ public class LinkedList {
 		}
 	}
 	
-	public Node FindBeginning() {
+	Node FindBeginning() {
 		Node slow = head;
 		Node fast = head;
 		

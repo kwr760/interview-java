@@ -3,7 +3,7 @@ package patterns.wiki.creation.builder;
 class CarBuilderImpl implements CarBuilder {
    private Car car;
 
-   public CarBuilderImpl() {
+   CarBuilderImpl() {
       car = new Car();
    }
 

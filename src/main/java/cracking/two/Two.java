@@ -1,6 +1,6 @@
 package cracking.two;
 
-public class Two<T> {
+class Two<T> {
   private Node head;
   private Node tail;
 

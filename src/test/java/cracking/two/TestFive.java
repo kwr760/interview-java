@@ -11,13 +11,13 @@ public class TestFive {
   public void testOne() {
     Five five = new Five();
 
-    Node<Integer> list1 = new Node(7, new Node( 4, new Node( 5, new Node( 3, null))));
-    Node<Integer> list2 = new Node(7, new Node( 4, new Node( 3, null)));
+    Node<Integer> list1 = new Node<>(7, new Node<>( 4, new Node<>( 5, new Node<>( 3, null))));
+    Node<Integer> list2 = new Node<>(7, new Node<>( 4, new Node<>( 3, null)));
     Node<Integer> sum = five.addLinkedLists(list1, list2, 0);
     sum.print();
 
-    list1 = new Node(9, new Node( 9, new Node( 8, new Node( 3, null))));
-    list2 = new Node(7, new Node( 4, new Node( 3, null)));
+    list1 = new Node<>(9, new Node<>(9, new Node<>(8, new Node<>( 3, null))));
+    list2 = new Node<>(7, new Node<>(4, new Node<>(3, null)));
     sum = five.addLinkedLists(list1, list2, 0);
     sum.print();
 

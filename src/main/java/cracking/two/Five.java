@@ -3,13 +3,13 @@ package cracking.two;
 import cracking.util.Node;
 
 class Five {
-  Node addLinkedLists(Node<Integer> list1, Node<Integer> list2, int carry)
+  Node<Integer> addLinkedLists(Node<Integer> list1, Node<Integer> list2, int carry)
   {
     if (list1 == null && list2 == null && carry == 0) {
       return null;
     }
 
-    int value = carry;
+    Integer value = carry;
     if (list1 != null) {
       value += list1.data;
     }
@@ -31,7 +31,7 @@ class Five {
       next2 = list2.next;
     }
 
-    Node<Integer> node = new Node(value, null);
+    Node<Integer> node = new Node<>(value, null);
     node.next = addLinkedLists(next1, next2, newCarry);
 
     return node;
@@ -52,29 +52,25 @@ class Five {
     if (sum.carry == 0) {
       return sum.sum;
     } else {
-      LinkedListNode result = insertBefore(sum.sum, sum.carry);
-      return result;
+      return insertBefore(sum.sum, sum.carry);
     }
   }
 
-  PartialSum addListsHelper(LinkedListNode l1, LinkedListNode l2) {
-    if (l1 == null && l2 == null) {
-      PartialSum sum = new PartialSum();
-      return sum;
+  private PartialSum addListsHelper(LinkedListNode l1, LinkedListNode l2) {
+    if (l1 == null || l2 == null) {
+      return new PartialSum();
     }
 
     PartialSum sum = addListsHelper(l1.next, l2.next);
 
     int val = sum.carry + l1.data + l2.data;
 
-    LinkedListNode full_result = insertBefore(sum.sum, val % 10);
-
-    sum.sum = full_result;
+    sum.sum = insertBefore(sum.sum, val % 10);
     sum.carry = val / 10;
     return sum;
   }
 
-  LinkedListNode padList(LinkedListNode l1, int padding) {
+  private LinkedListNode padList(LinkedListNode l1, int padding) {
     LinkedListNode head = l1;
     for (int i = 0; i < padding; i++) {
       LinkedListNode n = new LinkedListNode(0);
@@ -85,7 +81,7 @@ class Five {
     return head;
   }
 
-  LinkedListNode insertBefore(LinkedListNode list, int data) {
+  private LinkedListNode insertBefore(LinkedListNode list, int data) {
     LinkedListNode node = new LinkedListNode(data);
     if (list != null) {
       list.prev = node;
@@ -94,7 +90,7 @@ class Five {
     return node;
   }
 
-  int length(LinkedListNode node) {
+  private int length(LinkedListNode node) {
     int len = 0;
     while (node != null) {
       len++;

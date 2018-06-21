@@ -8,7 +8,7 @@ public class SimpleArray {
 	private int writeIndex = 0;
 	private final static Random generator = new Random();
 	
-	public SimpleArray(int size) {
+	SimpleArray(int size) {
 		array = new int[size];
 	}
 	

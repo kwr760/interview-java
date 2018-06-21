@@ -5,16 +5,15 @@ import java.util.Arrays;
 
 public class NumberSubsets {
 	private String input;
-	private ArrayList<Integer> numberList = new ArrayList<Integer>();
-	private ArrayList<ArrayList<Integer>> subsets = new ArrayList<ArrayList<Integer>>();
+	private ArrayList<Integer> numberList = new ArrayList<>();
+	private ArrayList<ArrayList<Integer>> subsets = new ArrayList<>();
 	
 	public static void main (String[] args) {
 		NumberSubsets n = new NumberSubsets();
 		n.challengeThree();
 	}
 	
-	public void challengeThree() {
-//		input = "1, 2, 3, 4, 6";
+	void challengeThree() {
 		try {
 			input = Utility.loadFromFile("C:\\Devel\\korrio-challenge\\numbers.csv");
 		}
@@ -25,9 +24,8 @@ public class NumberSubsets {
 		}
 			
 		initializeNumberList();
-		ArrayList<Integer> check = new ArrayList<Integer>();
+		ArrayList<Integer> check = new ArrayList<>();
 		findSums(0, check);
-//		displayResult();
 		displayCount();
 	}
 	
@@ -70,17 +68,12 @@ public class NumberSubsets {
 			sum += i;
 		}
 		
-		if (numberList.contains(sum)) {
-			return true;
-		}
-		
-		return false;
+		return numberList.contains(sum);
 	}
 	
 	private void findSums(int position, ArrayList<Integer> determineSums) {
 		for (int i = position; i < numberList.size(); i++) {
-			ArrayList<Integer> duplicateSums = new ArrayList<Integer>();
-			duplicateSums.addAll(determineSums);
+			ArrayList<Integer> duplicateSums = new ArrayList<>(determineSums);
 			duplicateSums.add(numberList.get(i));
 			if (duplicateSums.size() > 1) {
 				if (isSumInNumberList(duplicateSums)) {

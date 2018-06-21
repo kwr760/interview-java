@@ -1,11 +1,11 @@
 package cracking.stack;
 
 public class QuestionB {
-	static int number_of_stacks = 3;
-	static int default_size = 4;
-	static int total_size = default_size * number_of_stacks;
-	static StackData[] stacks = {new StackData(0, default_size), new StackData(default_size, default_size), new StackData(default_size * 2, default_size)};
-	static int[] buffer = new int[total_size];
+	private static int number_of_stacks = 3;
+	private static int default_size = 4;
+	private static int total_size = default_size * number_of_stacks;
+	private static StackData[] stacks = {new StackData(0, default_size), new StackData(default_size, default_size), new StackData(default_size * 2, default_size)};
+	private static int[] buffer = new int[total_size];
 	
 	public static void main(String [] args) throws Exception {
 		push(0, 10);
@@ -14,25 +14,25 @@ public class QuestionB {
 		System.out.println(pop(0));
 	}
 	
-	public static int numberOfElements() {
+	private static int numberOfElements() {
 		return stacks[0].size + stacks[1].size + stacks[2].size;
 	}
 	
-	public static int nextElement(int index){
+	private static int nextElement(int index){
 		if (index + 1 == total_size)
 			return 0;
 		else
 			return index + 1;
 	}
 	
-	public static int previousElement(int index){
+	private static int previousElement(int index){
 		if (index == 0)
 			return total_size - 1;
 		else
 			return index - 1;
 	}
 	
-	public static void shift(int stackNum) {
+	private static void shift(int stackNum) {
 		StackData stack = stacks[stackNum];
 		if (stack.size >= stack.capacity) {
 			int nextStack = (stackNum + 1) % number_of_stacks;
@@ -45,12 +45,12 @@ public class QuestionB {
 		}
 	}
 	
-	public static void expand(int stackNum) {
+	private static void expand(int stackNum) {
 		shift((stackNum + 1) % number_of_stacks);
 		stacks[stackNum].capacity++;
 	}
 	
-	public static void push(int stackNum, int value) throws Exception {
+	private static void push(int stackNum, int value) throws Exception {
 		StackData stack = stacks[stackNum];
 		
 		if (stack.size >= stack.capacity) {
@@ -67,7 +67,7 @@ public class QuestionB {
 		buffer[stack.pointer] = value;
 	}
 
-	public static int pop(int stackNum) throws Exception {
+	private static int pop(int stackNum) throws Exception {
 		StackData stack = stacks[stackNum];
 		
 		if (stack.size == 0) {

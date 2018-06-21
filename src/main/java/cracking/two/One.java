@@ -2,7 +2,7 @@ package cracking.two;
 
 import java.util.HashMap;
 
-public class One<T> {
+class One<T> {
   private Node head;
   private Node tail;
 
@@ -22,7 +22,7 @@ public class One<T> {
   }
 
   void add(T data) {
-    Node next = new Node<T>(data, null);
+    Node next = new Node<>(data, null);
     if (null == this.head) {
       this.head = next;
       this.tail = this.head;

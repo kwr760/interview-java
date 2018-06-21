@@ -20,7 +20,7 @@ public class Reverse {
 			next.next = node;
 		}
 		
-		public void display() {
+		void display() {
 			Node node = this;
 			
 			while (null != node) {
@@ -30,7 +30,7 @@ public class Reverse {
 		}
 	}
 
-	public Node reverse(Node head) {
+	private Node reverse(Node head) {
 		Node current = head;
 		Node newHead = null;
 		while (current != null) {

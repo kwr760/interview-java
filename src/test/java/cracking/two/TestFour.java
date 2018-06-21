@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class TestFour {
   @Test
   public void testName() throws Exception {
-    Node head = new Node<Integer>(3, null);
+    Node head = new Node<>(3, null);
     head
         .add(5)
         .add(1)

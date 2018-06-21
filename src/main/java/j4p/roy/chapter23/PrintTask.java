@@ -7,7 +7,7 @@ public class PrintTask implements Runnable {
 	private final String taskName;
 	private final static Random generator = new Random();
 	
-	public PrintTask(String name) {
+	PrintTask(String name) {
 		taskName = name;
 		sleepTime = generator.nextInt(5000);
 	}

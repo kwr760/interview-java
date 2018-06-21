@@ -9,7 +9,7 @@ public class LongestPalindrome {
 		p.challengeOne();
 	}
 	
-	public void challengeOne() {
+	void challengeOne() {
 //		input = "I like racecars that go fast";
 		try {
 			input = Utility.loadFromFile("C:\\Devel\\korrio-challenge\\gettysburg.txt");
@@ -20,7 +20,6 @@ public class LongestPalindrome {
 		}
 
 		System.out.println("The longest palindrome is "	+ findPalindromes());
-		return;
 	}
 
 	private StringBuilder buildPalindrome(StringBuilder palindrone, int start, int end) {
@@ -61,6 +60,6 @@ public class LongestPalindrome {
 			evenPalindrome(i);
 		}
 
-		return longest.toString();
+		return longest;
 	}
 }

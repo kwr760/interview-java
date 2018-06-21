@@ -6,12 +6,12 @@ public class Four {
   private Stack<Integer> disks;
   private int index;
 
-  public Four(int i) {
-    disks = new Stack<Integer>();
+  Four(int i) {
+    disks = new Stack<>();
     index = i;
   }
 
-  public int index() {
+  private int index() {
     return index;
   }
 
@@ -23,13 +23,13 @@ public class Four {
     }
   }
 
-  public void moveTopTo(Four tower) {
+  private void moveTopTo(Four tower) {
     int top = disks.pop();
     tower.add(top);
     System.out.println("Move disk " + top + " from " + index() + " to " + tower.index());
   }
 
-  public void moveDisks(int n, Four dest, Four aux) {
+  void moveDisks(int n, Four dest, Four aux) {
     if (n > 0 ) {
       moveDisks(n - 1, aux, dest);
       moveTopTo(dest);

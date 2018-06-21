@@ -12,11 +12,11 @@ public class email_regex {
 
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-	public email_regex() {
+	private void email_regex() {
 		pattern = Pattern.compile(EMAIL_PATTERN);
 	}
 
-	public boolean validate(final String email) {
+	private boolean validate(final String email) {
 		matcher = pattern.matcher(email);
 		return matcher.matches();
 	}

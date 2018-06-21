@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 
 public class lowercase {
-	String toLowercase(String string) {
+	private String toLowercase(String string) {
 		StringBuilder lower = new StringBuilder("");
 		
 		for (int i = 0; i < string.length(); i++) {

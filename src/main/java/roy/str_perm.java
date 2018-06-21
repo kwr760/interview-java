@@ -8,12 +8,12 @@ import java.util.Arrays;
 public class str_perm {
 	private boolean first = true;
 
-	public void permutation(StringBuilder perm, int position, String str) {
+	private void permutation(StringBuilder perm, int position, String str) {
 		str += perm.charAt(position);
 		perm.deleteCharAt(position);
 
 		if (0 == perm.length()) {
-			if (true == first) {
+			if (first) {
 				System.out.print(str);
 				first = false;
 			}
@@ -27,11 +27,9 @@ public class str_perm {
 			StringBuilder copy = new StringBuilder(perm);
 			permutation(copy, i, str);
 		}
-	
-		return;
 	}
 	
-	public void permutation(StringBuilder perm) {
+	private void permutation(StringBuilder perm) {
 		first = true;
 		for (int i = 0; i < perm.length(); i++) {
 			char [] sort = perm.toString().toCharArray();

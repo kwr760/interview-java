@@ -4,7 +4,7 @@ public class SubString {
 	// The task mentioned to 'Signal an error'.  I preferred to returned a false value, as I think
 	// throwing an exception would too strong.  I included a couple of error checks throwing
 	// an error to display how to signal or throw an error.
-	public boolean IsSubString(char[] base, char[] sub) throws Exception {
+	private boolean IsSubString(char[] base, char[] sub) throws Exception {
 		if ((null == base) || (null == sub) || (sub.length == 0))
 			throw new Exception("Bad arguments");
 		if (base.length < sub.length)
@@ -32,11 +32,11 @@ public class SubString {
 		String err = "x";
 		
 		try {
-			if (true == ss.IsSubString(base.toCharArray(), good.toCharArray()))
+			if (ss.IsSubString(base.toCharArray(), good.toCharArray()))
 				System.out.println(good + " is a substring of " + base);
 			else 
 				System.out.println(good + " is not a substring of " + base);
-			if (true == ss.IsSubString(base.toCharArray(), err.toCharArray()))
+			if (ss.IsSubString(base.toCharArray(), err.toCharArray()))
 				System.out.println(err + " is a substring of " + base);
 			else
 				System.out.println(err + " is not a substring of " + base);

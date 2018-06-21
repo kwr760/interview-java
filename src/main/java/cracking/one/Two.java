@@ -1,6 +1,6 @@
 package cracking.one;
 
-public class Two {
+class Two {
     String reverse(String str)
     {
         char[] strArray = str.toCharArray();

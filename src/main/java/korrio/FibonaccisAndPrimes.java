@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class FibonaccisAndPrimes {
 	private long[] savedNumbers = new long[90];  // Overflow happens at 93
-	private ArrayList<Long> primes = new ArrayList<Long>(); // Save the primes
+	private ArrayList<Long> primes = new ArrayList<>(); // Save the primes
 	
 	public static void main(String[] args) {
 		FibonaccisAndPrimes f = new FibonaccisAndPrimes();
 		f.challengeTwo();		
 	}
 
-	public void challengeTwo() {
+	void challengeTwo() {
 		for (int i = 0; i < 90; i++) {
 			long x = findFibonacci(i);
 			if (x > 227000)

@@ -2,8 +2,8 @@ package cracking.four;
 
 import cracking.util.BinaryNode;
 
-public class One {
-  public boolean isBalanced(BinaryNode node) {
+class One {
+  boolean isBalanced(BinaryNode node) {
     if (null == node) {
       return true;
     }
@@ -12,17 +12,13 @@ public class One {
     int heightRight = height(node.right);
 
     System.out.println(heightLeft + " - " + heightRight);
-    if (Math.abs(heightLeft - heightRight) <= 1
+    return (Math.abs(heightLeft - heightRight) <= 1
         && isBalanced(node.left)
         && isBalanced(node.right)
-        ) {
-      return true;
-    }
-
-    return false;
+        );
   }
 
-  public int height(BinaryNode node) {
+  private int height(BinaryNode node) {
     if (null == node) {
       return 0;
     }

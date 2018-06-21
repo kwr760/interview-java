@@ -8,12 +8,12 @@ public abstract class Prototype implements Cloneable {
       return (Prototype) super.clone();
    }
 
-   public void displayConstruct() {
+   void displayConstruct() {
       System.out.println("Construct:  " + this.a);
       System.out.println("Construct:  " + this.b);
    }
 
-   public void displayClone() {
+   void displayClone() {
       System.out.println("Clone:  " + this.a);
       System.out.println("Clone:  " + this.b);
    }

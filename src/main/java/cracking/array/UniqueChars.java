@@ -4,8 +4,8 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class UniqueChars {
-	public boolean checkForAllUnique(String str) {
-		Set<Character> check = new HashSet<Character>();
+	private boolean checkForAllUnique(String str) {
+		Set<Character> check = new HashSet<>();
 		
 		for (int i = 0; i < str.length(); i++) {
 			if (!check.add(Character.toLowerCase(str.charAt(i)))) {
@@ -15,7 +15,7 @@ public class UniqueChars {
 		return true;
 	}
 
-	public boolean checkForAllUniqueNoStruct(String str) {
+	private boolean checkForAllUniqueNoStruct(String str) {
 		for (int i = 0; i < str.length(); i++)
 		{
 			for (int r = i + 1; r < str.length(); r++) 
@@ -31,8 +31,7 @@ public class UniqueChars {
 	
 	public static void main(String[] args) {
 		String test = "ChekForDupliats";
-//		String test = "CheckForDuplicates";
-		
+
 		UniqueChars uc = new UniqueChars();
 		System.out.println(test + " - All Uniques: " + uc.checkForAllUnique(test));
 		System.out.println(test + " - All Uniques: " + uc.checkForAllUniqueNoStruct(test));

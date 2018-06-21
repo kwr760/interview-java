@@ -10,13 +10,13 @@ import java.util.List;
 public class discount_offers {
 	private class Product {
 		private int letterCount;
-		private List<Integer> factors = new ArrayList<Integer>();
+		private List<Integer> factors = new ArrayList<>();
 		
 		private void FindLetterCount(String name) {
 			char[] chArray = name.toCharArray();
 			letterCount = 0;
 			for (char ch : chArray) {
-				if (true == Character.isLetter(ch))
+				if (Character.isLetter(ch))
 					letterCount++;
 			}
 		}
@@ -26,7 +26,7 @@ public class discount_offers {
 					factors.add(i);
 			}
 		}
-		public Product(String name) {
+		Product(String name) {
 			FindLetterCount(name);
 			FindFactors();			
 //			System.out.println(name + " : " + letterCount + " : " + factors );
@@ -37,7 +37,7 @@ public class discount_offers {
 		private int vowelCount;
 		private int consonantCount;
 		private int letterCount;
-		private List<Integer> factors = new ArrayList<Integer>();
+		private List<Integer> factors = new ArrayList<>();
 		
 		private void FindFactors() {
 			for (int i = 2; i * i <= letterCount; i++) {
@@ -46,25 +46,17 @@ public class discount_offers {
 			}
 		}
 		private void FindVowelCount(String name) {
-			char[] chArray = name.toLowerCase().toCharArray();
-			List<Character> copy = new ArrayList<Character>();
-			for (char ch : chArray)
-				copy.add(ch);
-			copy.retainAll(vowels);
+			List<Character> copy = getCharacters(name, vowels);
 			vowelCount = copy.size();
 		}
 		private void FindConsonantCount(String name) {
-			char[] chArray = name.toLowerCase().toCharArray();
-			List<Character> copy = new ArrayList<Character>();
-			for (char ch : chArray)
-				copy.add(ch);
-			copy.retainAll(consonants);
+			List<Character> copy = getCharacters(name, consonants);
 			consonantCount = copy.size();
 		}
 		private void FindLetterCount() {
 			letterCount = vowelCount + consonantCount;
 		}
-		public Customer(String name) {
+		Customer(String name) {
 			FindVowelCount(name);
 			FindConsonantCount(name);
 			FindLetterCount();
@@ -72,15 +64,24 @@ public class discount_offers {
 //			System.out.println(name + " : " + vowelCount + " : " + consonantCount + " : " + letterCount + " : " + factors );
 		}
 	}
-	
+
+	private List<Character> getCharacters(String name, List<Character> values) {
+		char[] chArray = name.toLowerCase().toCharArray();
+		List<Character> copy = new ArrayList<>();
+		for (char ch : chArray)
+			copy.add(ch);
+		copy.retainAll(values);
+		return copy;
+	}
+
 	private double ss; 
 	
-	List<Character> vowels = new ArrayList<Character>();
-	List<Character> consonants = new ArrayList<Character>();
-	List<Customer> customers = new ArrayList<Customer>();
-	List<Product> products = new ArrayList<Product>();
+	private List<Character> vowels;
+	private List<Character> consonants;
+	private List<Customer> customers = new ArrayList<>();
+	private List<Product> products = new ArrayList<>();
 	
-	public discount_offers() {
+	private discount_offers() {
 		vowels = Arrays.asList('a', 'e', 'i', 'o', 'u', 'y');
 		consonants = Arrays.asList('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 
 								   'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'w', 'z');
@@ -102,7 +103,7 @@ public class discount_offers {
 		else
 			score += customer.consonantCount * 1.5;					
 
-		List<Integer> common = new ArrayList<Integer>(product.factors);
+		List<Integer> common = new ArrayList<>(product.factors);
 		common.retainAll(customer.factors);
 		if (common.size() > 0)
 			score *= 1.5;
@@ -110,15 +111,15 @@ public class discount_offers {
 		return score;
 	}
 
-	private double FindMaxSuiabilityScore(ArrayList<Customer> customers, ArrayList<Product> products)
+	private double FindMaxSuitabilityScore(ArrayList<Customer> customers, ArrayList<Product> products)
 	{
 		int customer = -1;
 		double max = 0;
-		double current = 0;
+		double current;
 		
 		for (int i = 0; i < customers.size(); i++) {
 			for (int j = 0; j < products.size(); j++) {
-				current = FindSuitabilityScore((Customer)customers.get(i), (Product)products.get(j));
+				current = FindSuitabilityScore(customers.get(i), products.get(j));
 				if (current > max) {
 					customer = i;
 					max = current;
@@ -135,17 +136,17 @@ public class discount_offers {
 	}
 	
 	private void FindBestSuitabilityScore() {
-		ArrayList<Customer> cCustomers = new ArrayList<Customer>(customers);  
-		ArrayList<Product> cProducts = new ArrayList<Product>(products);
+		ArrayList<Customer> cCustomers = new ArrayList<>(customers);
+		ArrayList<Product> cProducts = new ArrayList<>(products);
 		
 		ss = 0;
 		
 		while ((cCustomers.size() > 0) && (cProducts.size() > 0)){
-			ss += FindMaxSuiabilityScore(cCustomers, cProducts);
+			ss += FindMaxSuitabilityScore(cCustomers, cProducts);
 		}
 	}
 
-	public void ss(String[] customers, String[] products) {
+	private void ss(String[] customers, String[] products) {
 		AddCustomers(customers);
 		AddProducts(products);
 		FindBestSuitabilityScore();
@@ -168,7 +169,6 @@ public class discount_offers {
 				String[] lineArray = line.split(";");
 				if (lineArray.length > 0) {
 					f.ss(lineArray[0].split(","),lineArray[1].split(","));
-//					System.exit(0);
 				}
 			}
 		} catch (Exception e) {

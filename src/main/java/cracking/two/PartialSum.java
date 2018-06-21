@@ -1,6 +1,6 @@
 package cracking.two;
 
-public class PartialSum {
-  public LinkedListNode sum = null;
-  public int carry = 0;
+class PartialSum {
+  LinkedListNode sum = null;
+  int carry = 0;
 }

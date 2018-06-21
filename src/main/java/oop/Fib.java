@@ -10,12 +10,12 @@ public class Fib {
 		NthMinusOne = 1;
 	}
 	
-	public Integer FindNth(Integer rank){
+	private Integer FindNth(Integer rank){
 		if (rank < 1) {
-			return new Integer(0);
+			return 0;
 		}
 		else if ((1 == rank) || (2 == rank)) {
-			return new Integer(1);
+			return 1;
 		}
 		
 		Integer next = this.Nth + this.NthMinusOne;
@@ -23,7 +23,7 @@ public class Fib {
 		this.Nth = next;
 		this.position = this.position++;
 		
-		if (this.position == rank){
+		if (this.position.equals(rank)){
 			return this.Nth;
 		}
 		

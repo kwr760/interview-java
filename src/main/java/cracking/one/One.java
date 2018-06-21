@@ -2,7 +2,7 @@ package cracking.one;
 
 import java.util.HashMap;
 
-public class One {
+class One {
     void containsAllUniqueChars(String inputString)
     {
         if (containsAllUniqueCharsSimple(inputString)) {

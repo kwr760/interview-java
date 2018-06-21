@@ -1,7 +1,5 @@
 package cracking.three;
 
-import java.util.ArrayList;
-
 public class One {
   private int size;
   private int[] stacks;
@@ -12,7 +10,7 @@ public class One {
     this.stacks = new int[stackPosition.length * size];
   }
 
-  public void push(int stack, Integer value) throws RuntimeException {
+  void push(int stack, Integer value) throws RuntimeException {
     if (isFull(stack)) {
       throw new RuntimeException("That stack is full.");
     }
@@ -21,7 +19,7 @@ public class One {
     this.stacks[position] = value;
   }
 
-  public Integer pop(int stack) throws RuntimeException {
+  Integer pop(int stack) throws RuntimeException {
     if (isEmpty(stack)) {
       throw new RuntimeException("That stack is empty");
     }
@@ -40,12 +38,12 @@ public class One {
     return this.stacks[position];
   }
 
-  public boolean isEmpty(int stack) throws ArrayIndexOutOfBoundsException {
+  private boolean isEmpty(int stack) throws ArrayIndexOutOfBoundsException {
     int position = this.stackPosition[stack];
     return (-1 == position);
   }
 
-  public boolean isFull(int stack) throws ArrayIndexOutOfBoundsException {
+  private boolean isFull(int stack) throws ArrayIndexOutOfBoundsException {
     int position = this.stackPosition[stack];
     return ((this.size - 1) == position);
   }

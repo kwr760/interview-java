@@ -15,7 +15,7 @@ public class LinkedListNode {
     add(data, this);
   }
 
-  void add(int data, LinkedListNode prev) {
+  private void add(int data, LinkedListNode prev) {
     if (this.next != null) {
       this.next.add(data, this);
     } else {

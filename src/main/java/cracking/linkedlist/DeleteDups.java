@@ -8,8 +8,8 @@ import java.util.ListIterator;
 public class DeleteDups {
 
 	public static void deleteDupsHash(ArrayList<Integer> n){
-		Hashtable<Integer, Boolean> table = new Hashtable<Integer, Boolean>();
-		
+		Hashtable<Integer, Boolean> table = new Hashtable<>();
+
 		Iterator<Integer> iter = n.iterator();
 		while (iter.hasNext()) {
 			Integer i = iter.next();
@@ -22,7 +22,7 @@ public class DeleteDups {
 		}
 	}
 	
-	public static void deleteDupsIterator(ArrayList<Integer> n) {
+	private static void deleteDupsIterator(ArrayList<Integer> n) {
 		ListIterator<Integer> iter = n.listIterator();
 		ListIterator<Integer> runner;
 		
@@ -43,7 +43,7 @@ public class DeleteDups {
 	}
 	
 	public static void main(String[] args) {
-		ArrayList<Integer> l = new ArrayList<Integer>();
+		ArrayList<Integer> l = new ArrayList<>();
 		l.add(1);
 		l.add(2);
 		l.add(1);

@@ -3,7 +3,7 @@ package cracking.three;
 import java.util.Stack;
 
 public class Two extends Stack<Integer> {
-  Stack<Integer> minStack = new Stack<Integer>();
+  private Stack<Integer> minStack = new Stack<>();
 
   public Integer push(Integer value) {
     if (value <= min()) {
@@ -14,7 +14,7 @@ public class Two extends Stack<Integer> {
 
   public Integer pop() {
     Integer value = super.pop();
-    if (value == min()) {
+    if (value.equals(min())) {
       minStack.pop();
     }
     return value;

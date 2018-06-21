@@ -17,7 +17,7 @@ public class SimpleCache<T> {
 		this(100);
 	}
 
-	public SimpleCache(final long defaultExpire) {
+	private SimpleCache(final long defaultExpire) {
 		this.objects = Collections.synchronizedMap(new HashMap<String, T>());
 		this.expire = Collections.synchronizedMap(new HashMap<String, Long>());
 		this.defaultExpire = defaultExpire;
@@ -25,7 +25,7 @@ public class SimpleCache<T> {
 		Executors.newScheduledThreadPool(2).scheduleWithFixedDelay(this.removeExpired(), this.defaultExpire / 2, this.defaultExpire, TimeUnit.SECONDS);
 	}
 
-	private final Runnable removeExpired() {
+	private Runnable removeExpired() {
 		return new Runnable() {
 			public void run() {
 				for (final String name : expire.keySet()) {
@@ -37,7 +37,7 @@ public class SimpleCache<T> {
 		};
 	}
 
-	private final Runnable createRemoveRunnable(final String name) {
+	private Runnable createRemoveRunnable(final String name) {
 		return new Runnable() {
 			public void run() {
 				objects.remove(name);
@@ -54,12 +54,12 @@ public class SimpleCache<T> {
 		this.put(name, obj, this.defaultExpire);
 	}
 
-	public void put(final String name, final T obj, final long expireTime) {
+	private void put(final String name, final T obj, final long expireTime) {
 		this.objects.put(name, obj);
 		this.expire.put(name, System.currentTimeMillis() + expireTime * 1000);
 	}
 
-	public T get(final String name) {
+	private T get(final String name) {
 		final Long expireTime = this.expire.get(name);
 		if (expireTime == null) return null;
 		if (System.currentTimeMillis() > expireTime) {

@@ -2,15 +2,15 @@ package cracking.util;
 
 public class Node<T> {
   public T data;
-  public Node next;
+  public Node<T> next;
 
-  public Node(T data, Node next) {
+  public Node(T data, Node<T> next) {
     this.data = data;
     this.next = next;
   }
 
   public Node add(T data) {
-    Node node = new Node<T>(data, null);
+    Node<T> node = new Node<>(data, null);
     this.next = node;
     return node;
   }

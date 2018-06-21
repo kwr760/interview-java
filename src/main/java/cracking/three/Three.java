@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class Three {
-  final int MAX_HEIGHT = 5;
+  private final int MAX_HEIGHT = 5;
   private int top = 0;
-  private ArrayList<Stack<Integer>> stacks = new ArrayList<Stack<Integer>>();
+  private ArrayList<Stack<Integer>> stacks = new ArrayList<>();
 
   public Three() {
-    this.stacks.add(new Stack<Integer>());
+    this.stacks.add(new Stack<>());
   }
 
-  public Integer push(Integer item) {
+  Integer push(Integer item) {
     Stack<Integer> stack = this.stacks.get(this.top);
     if (stack.size() == (this.MAX_HEIGHT)) {
-      stack = new Stack<Integer>();
+      stack = new Stack<>();
       this.stacks.add(stack);
       this.top++;
     }
@@ -25,7 +25,7 @@ public class Three {
     return item;
   }
 
-  public Integer pop() {
+  Integer pop() {
     Stack<Integer> stack = this.stacks.get(this.top);
     Integer item = stack.pop();
     System.out.println("popped: " + item + " off = " + this.top);
